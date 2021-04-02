@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Fake frontend API calling page</title>
+  <script src="api-call.js"></script>
+  <style>
+    div {
+      border: blue 2px solid;
+      margin-bottom:20px;
+    }
+  </style>
+</head>
+
+<body>
+  <button onclick="getACarFromMyBackend()">Get me a CARRRR</button>
+  <h1>API result of 1st API call</h1>
+  <div id="content1"></div>
+
+  <button onclick="getABaloonFromMyBackend()">Get me a Baloon</button>
+  <h1>API result of 2nd API call</h1>
+  <div id="content2"></div>
+
+  <button onclick="getFileContentFromMyBackend('GET')">Get the File content - GET</button>
+  <button onclick="getFileContentFromMyBackend('PUT')">Get the File content - PUT</button>
+  <button onclick="getFileContentFromMyBackend('PATCH')">Get the File content - PATCH</button>
+  <button onclick="getFileContentFromMyBackend('POST')">Get the File content - POST</button>
+  <h1>API result of 3rd API call</h1>
+  <div id="content3"></div>
+</body>
+
+</html>
