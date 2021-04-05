@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Johnny Chao, Joseph Chamberlain. Ofa Faletau",
+  "author": "Johnny Chao, Joseph Chamberlain",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

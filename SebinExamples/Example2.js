@@ -10,13 +10,14 @@ app.get("/hello", (req, res) => {
 	console.log("GET called");
 	res.send("Hello GET !");
 });
-app.post("/hello", (req, res) => {
-	console.log("POST called");
+app.get("/test", (req, res) => {
+	console.log("test get called");
 	res.send({
 		name: "Johnny",
 		role: "developer",
 	});
 });
+
 app.put("/hello", (req, res) => {
 	console.log("PUT called");
 	res.send("Hello PUT !");
@@ -29,4 +30,24 @@ app.patch("/hello", (req, res) => {
 	console.log("PATCH called");
 	res.send("Hello PATCH !");
 });
-app.listen(3000, () => console.log("Server ready at port 3000"));
+
+app.get("/baloon", (req, res) => {
+	console.log("GET called baloon");
+	res.end(`
+
+ <img src="https://previews.123rf.com/images/robisklp/robisklp1508/robisklp150800031/43577538-ballons-with-confetti.jpg">
+ <img src="./balloons.jpg">
+ `);
+});
+
+app.get("/car", (req, res) => {
+	console.log("GET called car");
+	res.end(`
+
+ <img src="https://prestigemotorsport.com.au/wp-content/uploads/2016/07/2004-Mitsubishi-Lancer-EVO-8-MR-front-1024x576.jpg">
+ <img src="./workwheels.jpg">
+ `);
+});
+
+const port = process.env.PORT || 8080;
+app.listen(port, () => console.log(`Server ready at port ${port}`));
