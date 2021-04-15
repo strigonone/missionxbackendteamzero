@@ -10,7 +10,7 @@ app.get("/hello", (req, res) => {
 	console.log("GET called");
 	res.send("Hello GET !");
 });
-app.get("/test", (req, res) => {
+app.get("/hello", (req, res) => {
 	console.log("test get called");
 	res.send({
 		name: "Johnny",

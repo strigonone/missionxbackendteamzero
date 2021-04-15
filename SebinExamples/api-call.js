@@ -28,14 +28,14 @@ const getFileContentFromMyBackend = (methodOfRequest) => {
 };
 
 const getFileContentFromMyBackend2 = (methodOfRequest) => {
-	const requestURL4 = "http://localhost:8080/test";
+	const requestURL4 = "http://localhost:8080/hello";
 
 	// calls the API with the url 'requestURL2'
 	// once we get the response then do something with it
 	// * CONSUMER of the promise returned by the Fetch API
 	fetch(requestURL4, { method: methodOfRequest })
 		.then((response) => response.text())
-		.then((data) => putDataIntoPage(data, "content4"));
+		.then((data) => putDataIntoPage(data.name, "content4"));
 };
 
 /**
