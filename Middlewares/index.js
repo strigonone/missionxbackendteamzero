@@ -1,4 +1,6 @@
 const morgan = require("morgan");
+const express = require("express");
+const app = express();
 
 const errorHandler = (err, req, res, next) => {
 	if (res.headersSent) {
@@ -45,4 +47,4 @@ const allowCORS = function (req, res, next) {
 	next();
 };
 
-module.exports = { errorHandler, simpleLogger, allowCORS };
+module.exports = { errorHandler, allowCORS };

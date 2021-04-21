@@ -9,7 +9,7 @@ const cors = require("cors");
 const { port } = require("./Config/DBPort");
 
 const { connect } = require("./Database");
-const { errorHandler, allowCORS } = require("./Middelwares");
+const { errorHandler, allowCORS } = require("./Middlewares");
 const projectRouter = require("./Routes/projects.routes");
 const userRouter = require("./Routes/user.routes");
 

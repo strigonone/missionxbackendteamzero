@@ -7,9 +7,9 @@ const connection = {
 	password: "JohnnyMissionReady2021#",
 	port: 3306,
 	// ssl:{ca:fs.readFileSync('<ca-cert filename>')
-	ssl: {
-		cert: fs.readFileSync("../SSL/getClusterSSLPublicKey.pem"),
-	},
+	// ssl: {
+	// 	cert: fs.readFileSync("../SSL/getClusterSSLPublicKey.pem"),
+	// },
 };
 
 module.exports = { connection };
