@@ -4,7 +4,9 @@
   "description": "Backend for Mission X Team Zero",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "serve": "nodemon src/server.js" 
   },
   "author": "Johnny Chao, Joseph Chamberlain",
   "license": "ISC",
