@@ -11,6 +11,7 @@ const connection = {
 		ca: Buffer.from(`../SSL/getClusterSSLPublicKey.pem`, "base64").toString(
 			"ascii"
 		),
+		rejectUnauthorized: false,
 	},
 
 	// ssl: { ca: fs.readFileSync("../SSL/getClusterSSLPublicKey.pem") },

@@ -17,13 +17,13 @@ const pool = getPool();
 //   PRIMARY KEY (`id`)
 // )
 
-const register = (name, email, passwordHash) => {
+const register = (FullName, Email, passwordHash) => {
 	return pool.then(async (connection) => {
 		const [
 			rows,
 		] = await connection.execute(
-			"INSERT INTO `MissionReady`.`Users` (`Fullname`,`Email`,`Password`) VALUES (?, ?, ?);",
-			[name, email, passwordHash]
+			"INSERT INTO `MissionReady`.`Users`(`FullName`,`Email`,`Password`) VALUES (?, ?, ?);",
+			[FullName, Email, passwordHash]
 		);
 		return rows;
 	});

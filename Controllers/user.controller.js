@@ -7,10 +7,10 @@ const {
 } = require("../Models/user.model");
 
 const login = async (req, res) => {
-	const { email, password } = req.body;
+	const { Email, password } = req.body;
 
-	// Gets the password for a particular email id.
-	const queryResult = await getPassword(email);
+	// Gets the password for a particular Email id.
+	const queryResult = await getPassword(Email);
 	const jsonResult = resultToJSON(queryResult);
 
 	if (jsonResult.length === 0) {
@@ -27,16 +27,16 @@ const login = async (req, res) => {
 };
 
 const register = async (req, res) => {
-	const { name, email, password } = req.body;
-	const passwordHash = getSaltedHash(password);
+	const { FullName, Email, Password } = req.body;
+	const passwordHash = getSaltedHash(Password);
 	console.log(passwordHash);
-	const queryResult = await registerUser(name, email, passwordHash);
+	const queryResult = await registerUser(FullName, Email, passwordHash);
 	res.status(200).json(queryResult);
 };
 
 const resetPassword = async (req, res) => {
-	const { email, oldPassword, newPassword } = req.body;
-	console.log({ email, oldPassword, newPassword });
+	const { Email, oldPassword, newPassword } = req.body;
+	console.log({ Email, oldPassword, newPassword });
 
 	if (oldPassword === newPassword) {
 		res.status(200).send("Password reset successfully");
