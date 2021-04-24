@@ -17,12 +17,24 @@ const pool = getPool();
 //   PRIMARY KEY (`id`)
 // )
 
-const register = (FullName, Email, passwordHash) => {
+const registerTeacher = (FullName, Email, passwordHash) => {
 	return pool.then(async (connection) => {
 		const [
 			rows,
 		] = await connection.execute(
-			"INSERT INTO `MissionReady`.`Users`(`FullName`,`Email`,`Password`) VALUES (?, ?, ?);",
+			"INSERT INTO `MissionReady`.`Users`(`FullName`,`Email`,`Password`, `Role`) VALUES (?, ?, ?, 'Teacher');",
+			[FullName, Email, passwordHash]
+		);
+		return rows;
+	});
+};
+
+const registerStudent = (FullName, Email, passwordHash) => {
+	return pool.then(async (connection) => {
+		const [
+			rows,
+		] = await connection.execute(
+			"INSERT INTO `MissionReady`.`Users`(`FullName`,`Email`,`Password`, `Role`) VALUES (?, ?, ?, 'Student');",
 			[FullName, Email, passwordHash]
 		);
 		return rows;
@@ -66,7 +78,8 @@ const getUserProfilePic = (id) => {
 };
 
 module.exports = {
-	registerUser: register,
+	registerUser: registerTeacher,
+	registerUser: registerStudent,
 	getPassword,
 	updateBLOB,
 	getUserProfilePic,

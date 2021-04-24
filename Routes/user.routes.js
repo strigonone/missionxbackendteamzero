@@ -6,7 +6,8 @@ const uploadMemory = multer({ storage: storage });
 
 const {
 	login,
-	register,
+	registerTeacher,
+	registerStudent,
 	resetPassword,
 	uploadProfilePic,
 	getProfilePic,
@@ -17,8 +18,11 @@ const router = Router();
 // /api/user + /login
 router.post("/login", login);
 
-// /api/user + /register
-router.post("/register", register);
+// /api/user + /registerTeacher
+router.post("/registerTeacher", registerTeacher);
+
+// /api/user + /registerStudent
+router.post("/registerStudent", registerStudent);
 
 // /api/user + /reset
 router.post("/reset", resetPassword);

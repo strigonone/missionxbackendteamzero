@@ -26,7 +26,15 @@ const login = async (req, res) => {
 	}
 };
 
-const register = async (req, res) => {
+const registerTeacher = async (req, res) => {
+	const { FullName, Email, Password } = req.body;
+	const passwordHash = getSaltedHash(Password);
+	console.log(passwordHash);
+	const queryResult = await registerUser(FullName, Email, passwordHash);
+	res.status(200).json(queryResult);
+};
+
+const registerStudent = async (req, res) => {
 	const { FullName, Email, Password } = req.body;
 	const passwordHash = getSaltedHash(Password);
 	console.log(passwordHash);
@@ -76,7 +84,8 @@ const uploadProfilePic = async (req, res) => {
 
 module.exports = {
 	login,
-	register,
+	registerTeacher,
+	registerStudent,
 	resetPassword,
 	uploadProfilePic,
 	getProfilePic,
