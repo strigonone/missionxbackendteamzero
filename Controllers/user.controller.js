@@ -1,7 +1,8 @@
 const { resultToJSON, getSaltedHash, checkPassword } = require("../Utilities");
 const {
 	getPassword,
-	registerUser,
+	teacherRegister,
+	studentRegister,
 	updateBLOB,
 	getUserProfilePic,
 } = require("../Models/user.model");
@@ -30,7 +31,7 @@ const registerTeacher = async (req, res) => {
 	const { FullName, Email, Password } = req.body;
 	const passwordHash = getSaltedHash(Password);
 	console.log(passwordHash);
-	const queryResult = await registerUser(FullName, Email, passwordHash);
+	const queryResult = await teacherRegister(FullName, Email, passwordHash);
 	res.status(200).json(queryResult);
 };
 
@@ -38,7 +39,7 @@ const registerStudent = async (req, res) => {
 	const { FullName, Email, Password } = req.body;
 	const passwordHash = getSaltedHash(Password);
 	console.log(passwordHash);
-	const queryResult = await registerUser(FullName, Email, passwordHash);
+	const queryResult = await studentRegister(FullName, Email, passwordHash);
 	res.status(200).json(queryResult);
 };
 

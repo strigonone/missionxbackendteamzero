@@ -17,7 +17,7 @@ const pool = getPool();
 //   PRIMARY KEY (`id`)
 // )
 
-const registerTeacher = (FullName, Email, passwordHash) => {
+const teacherRegister = (FullName, Email, passwordHash) => {
 	return pool.then(async (connection) => {
 		const [
 			rows,
@@ -29,7 +29,7 @@ const registerTeacher = (FullName, Email, passwordHash) => {
 	});
 };
 
-const registerStudent = (FullName, Email, passwordHash) => {
+const studentRegister = (FullName, Email, passwordHash) => {
 	return pool.then(async (connection) => {
 		const [
 			rows,
@@ -78,8 +78,8 @@ const getUserProfilePic = (id) => {
 };
 
 module.exports = {
-	registerUser: registerTeacher,
-	registerUser: registerStudent,
+	teacherRegister,
+	studentRegister,
 	getPassword,
 	updateBLOB,
 	getUserProfilePic,
