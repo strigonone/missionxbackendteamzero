@@ -41,13 +41,13 @@ const studentRegister = (FullName, Email, passwordHash) => {
 	});
 };
 
-const getPassword = (email) => {
+const getPassword = (Email) => {
 	return pool.then(async (connection) => {
 		const [
 			rows,
 		] = await connection.execute(
 			"SELECT `Users`.`Password` FROM `MissionReady`.`Users` WHERE `Users`.`Email` = ?;",
-			[email]
+			[Email]
 		);
 		return rows;
 	});
