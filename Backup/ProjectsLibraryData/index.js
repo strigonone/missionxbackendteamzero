@@ -75,6 +75,25 @@ app.get("/api/TeacherProjectsLibrary/getAllData", (req, res) => {
 		});
 });
 
+// When a API request is made to localhost:8080/api/project/getAllData, the DB query is executed
+
+app.get("/api/project/getAllData", (req, res) => {
+	runProjectsQuery()
+		.then((queryResult, fields) => {
+			const [rows] = queryResult;
+			const jsonResults = parseResultToJSON(rows);
+			console.log("Sending response for GET", jsonResults);
+			// Sends the response if query was successful.
+			res.send(jsonResults);
+		})
+		.catch((error) => {
+			console.log(error);
+			// Sends an error if the query returned an error.
+			res.status(500).send(error);
+		});
+});
+
+
 // app.get("/ProfilePageAPIs/getCourseName", (req, res) => {
 // 	runProjectsQuery()
 // 		.then((queryResult, fields) => {
