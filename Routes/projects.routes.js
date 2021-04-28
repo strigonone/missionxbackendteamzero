@@ -4,7 +4,7 @@ const { get, getOne, update } = require("../Controllers/project.controller");
 const router = Router();
 
 // GET /api/project + /
-router.get("/", get);
+router.get("/getAllData", get);
 
 // PATCH /api/project + /
 router.patch("/", update);

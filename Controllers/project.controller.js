@@ -2,10 +2,10 @@ const { getAllProjects } = require("../Models/project.model");
 const { resultToJSON } = require("../Utilities");
 
 const get = async (req, res) => {
-	const { langCode } = req.body;
-	if (langCode) {
+	const { activityType } = req.body; //expecting a param from the api, all of the filter options,  
+	if (activityType) {
 		// The DB query is run and result to the user returned here.
-		const queryResult = await getAllProjects(langCode);
+		const queryResult = await getAllProjects(activityType);
 		const jsonResult = resultToJSON(queryResult);
 
 		if (jsonResult.length === 0) {
