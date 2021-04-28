@@ -2,10 +2,10 @@ const { getAllProjects } = require("../Models/project.model");
 const { resultToJSON } = require("../Utilities");
 
 const get = async (req, res) => {
-	const { activityType } = req.body; //expecting a param from the api, all of the filter options,  
-	if (activityType) {
+		const  Projects  = req.body;//expecting a param from the api, all of the filter options,
+		if (Projects) {
 		// The DB query is run and result to the user returned here.
-		const queryResult = await getAllProjects(activityType);
+		const queryResult = await getAllProjects(Projects);
 		const jsonResult = resultToJSON(queryResult);
 
 		if (jsonResult.length === 0) {
@@ -15,17 +15,16 @@ const get = async (req, res) => {
 			res.status(200).json(jsonResult);
 		}
 	} else {
+		console.log(Projects)
 		console.error("Error: Missing Parameter");
 		res.status(400).send("Missing Parameter");
 	}
 };
-
 const getOne = async (req, res) => {
-	res.status(200).json({ user: "sebinbenjamin" });
+	res.status(200).json({ user: "Johnny" });
 };
-
 const update = async (req, res) => {
-	res.status(200).json({ user: "sebinbenjamin" });
+	res.status(200).json({ user: "Johnny" });
 };
 
 module.exports = { get, getOne, update };
