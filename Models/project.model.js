@@ -15,14 +15,14 @@ const getAllProjects = (Projects) => {
 };
 
 //used to select the difficulty
-const getSomeProjects = (someProjects) =>{
+const getBeginnerProjects = (someProjects) =>{
 	return pool.then(async (connection) => {
 		// Rows and fields are returned, we take only rows now.
-		const [rows] = await connection.execute("SELECT `Course` FROM `Project_Tables` where `Course` = ?", [
+		const [rows] = await connection.execute("SELECT * FROM `Project_Tables` where `Course` = 'Beginner'", [
 			someProjects,
 		]);
 		return rows;
 	});
 };
 
-module.exports = { getAllProjects, getSomeProjects };
+module.exports = { getAllProjects, getBeginnerProjects };

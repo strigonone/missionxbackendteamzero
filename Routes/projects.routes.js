@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { get, getOne, update } = require("../Controllers/project.controller");
+const { get, getTwo, update } = require("../Controllers/project.controller");
 
 const router = Router();
 
@@ -10,6 +10,6 @@ router.get("/getAllData", get);
 router.patch("/", update);
 
 // GET /api/project/ + :id/
-router.get("/:id", getOne);
+router.get("/getbeginnerdata", getTwo);
 
 module.exports = router;
