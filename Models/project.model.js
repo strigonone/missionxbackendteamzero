@@ -25,4 +25,24 @@ const getBeginnerProjects = (someProjects) =>{
 	});
 };
 
-module.exports = { getAllProjects, getBeginnerProjects };
+const getIntermediateProjects = (someProjects) =>{
+	return pool.then(async (connection) => {
+		// Rows and fields are returned, we take only rows now.
+		const [rows] = await connection.execute("SELECT * FROM `Project_Tables` where `Course` = 'Intermediate'", [
+			someProjects,
+		]);
+		return rows;
+	});
+};
+
+const getAdvancedProjects = (someProjects) =>{
+	return pool.then(async (connection) => {
+		// Rows and fields are returned, we take only rows now.
+		const [rows] = await connection.execute("SELECT * FROM `Project_Tables` where `Course` = 'Advanced'", [
+			someProjects,
+		]);
+		return rows;
+	});
+};
+
+module.exports = { getAllProjects, getBeginnerProjects, getIntermediateProjects, getAdvancedProjects };
