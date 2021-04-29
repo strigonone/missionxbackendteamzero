@@ -11,9 +11,13 @@ const {
 	resetPassword,
 	uploadProfilePic,
 	getProfilePic,
+	getUserDetails,
 } = require("../Controllers/user.controller");
 
 const router = Router();
+
+// /api/user + /
+router.get("/getUserDetails", getUserDetails);
 
 // /api/user + /login
 router.post("/login", login);

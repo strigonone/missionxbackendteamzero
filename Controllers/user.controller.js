@@ -5,6 +5,7 @@ const {
 	studentRegister,
 	updateBLOB,
 	getUserProfilePic,
+	getUserData,
 } = require("../Models/user.model");
 
 // The login controller which is called when we localhost:8080/api/user/login
@@ -17,7 +18,7 @@ const login = async (req, res) => {
 	const jsonResult = resultToJSON(queryResult);
 
 	if (jsonResult.length === 0) {
-		res.status(403).send("Could not find a user with the provided email id");
+		res.status(403).send("Could not find a user with the provided email ID");
 	} else {
 		const [{ Password: hash }] = jsonResult;
 		console.log(jsonResult);
@@ -86,6 +87,28 @@ const uploadProfilePic = async (req, res) => {
 	res.status(200).json(queryResult);
 };
 
+const getUserDetails = async (req, res) => {
+	const userData = req.body; //expecting a param from the api, all of the filter options,
+	if (userData) {
+		// The DB query is run and result to the user returned here.
+		const queryResult = await getUserData(userData);
+		const jsonResult = resultToJSON(queryResult);
+
+		if (jsonResult.length === 0) {
+			// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204#:~:text=The%20HTTP%20204%20No%20Content,included%20in%20such%20a%20response.
+			res.status(204).end();
+			console.log("add some data");
+		} else {
+			res.status(200).json(jsonResult);
+			console.log("have some data");
+			console.log(userData);
+		}
+	} else {
+		console.error("Error: Missing Parameter");
+		res.status(400).send("Missing Parameter");
+	}
+};
+
 module.exports = {
 	login,
 	registerTeacher,
@@ -93,4 +116,5 @@ module.exports = {
 	resetPassword,
 	uploadProfilePic,
 	getProfilePic,
+	getUserDetails,
 };
