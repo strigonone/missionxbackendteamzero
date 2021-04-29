@@ -8,15 +8,20 @@ const cors = require("cors");
 
 const { port } = require("./Config/DBPort");
 
+// Middleware functions to be used
 const { connect } = require("./Database");
 const { errorHandler, allowCORS } = require("./Middlewares");
+
+// Routers to be used
 const projectRouter = require("./Routes/projects.routes");
 const userRouter = require("./Routes/user.routes");
 
 // Init express
 const app = express();
+// Inbuilt json middleware
 app.use(express.json());
 
+// CORS Middleware
 // https://auth0.com/blog/cors-tutorial-a-guide-to-cross-origin-resource-sharing/
 app.use(cors());
 app.all("/*", allowCORS); // A middleware to allow all CORS requests

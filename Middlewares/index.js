@@ -37,7 +37,7 @@ app.use(morgan("tiny"));
  * to read information. It is basically an access control mechanism.
  * This middleware basically allows everything to simplify things for the demo.
  */
-const allowCORS = function (req, res, next) {
+const allowCORS = (req, res, next) => {
 	const origin = req.get("origin");
 	res.header("Access-Control-Allow-Origin", origin);
 	res.header(

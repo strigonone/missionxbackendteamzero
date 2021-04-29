@@ -7,22 +7,25 @@ const {
 	getUserProfilePic,
 } = require("../Models/user.model");
 
+// The login controller which is called when we localhost:8080/api/user/login
 const login = async (req, res) => {
-	const { Email, password } = req.body;
+	const { Email, Password } = req.body;
 
-	// Gets the password for a particular Email id.
+	// Gets the password for a particular email id.
+	// getPassword here is running the DB query and returning the result to the controller here.
 	const queryResult = await getPassword(Email);
 	const jsonResult = resultToJSON(queryResult);
 
 	if (jsonResult.length === 0) {
-		res.status(401).send("Could not find a user with the provided Email ID");
+		res.status(403).send("Could not find a user with the provided email id");
 	} else {
-		const [{ password: passwordHash }] = jsonResult;
-		const isValidPassword = checkPassword(password, passwordHash);
+		const [{ Password: hash }] = jsonResult;
+		console.log(jsonResult);
+		const isValidPassword = checkPassword(Password, hash);
 		if (isValidPassword) {
 			res.status(200).send("Successfully logged in user!");
 		} else {
-			res.status(401).send("Invalid Password.");
+			res.status(401).send("Invalid password.");
 		}
 	}
 };
