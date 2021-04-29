@@ -13,10 +13,10 @@ const get = async (req, res) => {
 			res.status(204).end();
 			console.log('add some data')
 			
+			
 		} else {
 			res.status(200).json(jsonResult);
-			console.log('have some data')
-			console.log(Projects)
+			console.log('have all the projects')
 		}
 	} else {
 		
@@ -50,8 +50,7 @@ const getTwo = async (req, res) => {
 	} else {
 		res.status(200).json(jsonResult);
 		
-		console.log('have some data')
-		console.log(Projects)
+		console.log('have some Beginner Projects')
 	}
 } else {
 	
@@ -65,7 +64,6 @@ const getThree = async (req, res) => {
 };
 
 const updateTwo = async (req, res) => {
-	console.log(req.query)
 	res.status(200).json({ Email: "ricardo@email.com" });
 };
 
