@@ -11,6 +11,7 @@ const connection = {
 		ca: Buffer.from(`../SSL/getClusterSSLPublicKey.pem`, "base64").toString(
 			"ascii"
 		),
+		// Needed to fix the selfAsigned certificate issue
 		rejectUnauthorized: false,
 	},
 

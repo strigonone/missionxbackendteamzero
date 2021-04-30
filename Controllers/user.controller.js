@@ -31,6 +31,7 @@ const login = async (req, res) => {
 	}
 };
 
+// Made specifically to register teachers
 const registerTeacher = async (req, res) => {
 	const { FullName, Email, Password } = req.body;
 	const passwordHash = getSaltedHash(Password);
@@ -39,6 +40,7 @@ const registerTeacher = async (req, res) => {
 	res.status(200).json(queryResult);
 };
 
+// Made specifically to register students
 const registerStudent = async (req, res) => {
 	const { FullName, Email, Password } = req.body;
 	const passwordHash = getSaltedHash(Password);

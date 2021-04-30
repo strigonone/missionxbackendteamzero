@@ -17,6 +17,7 @@ const pool = getPool();
 //   PRIMARY KEY (`id`)
 // )
 
+// When registering a teacher, we would liek to force their role to be in the teacher section
 const teacherRegister = (FullName, Email, passwordHash) => {
 	return pool.then(async (connection) => {
 		const [
@@ -29,6 +30,7 @@ const teacherRegister = (FullName, Email, passwordHash) => {
 	});
 };
 
+// When registering a student, we would like to force their role to be in the Student section
 const studentRegister = (FullName, Email, passwordHash) => {
 	return pool.then(async (connection) => {
 		const [

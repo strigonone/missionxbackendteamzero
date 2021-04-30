@@ -16,7 +16,7 @@ const {
 
 const router = Router();
 
-// /api/user + /
+// /api/user + /getUserDetails
 router.get("/getUserDetails", getUserDetails);
 
 // /api/user + /login
